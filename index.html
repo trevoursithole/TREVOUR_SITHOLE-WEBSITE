@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trevour_Sithole | Official Artist Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --spotify-green: #1DB954;
+            --spotify-black: #0a0a0a;
+            --spotify-card: rgba(24, 24, 24, 0.7);
+            --spotify-gray: #B3B3B3;
+            --live-red: #FF0000;
+        }
+
+        /* PARALLAX SYSTEM */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: var(--spotify-black);
+            color: white;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .parallax-wrapper {
+            /* This creates the scrolling depth */
+            height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            perspective: 2px;
+        }
+
+        .background-layer {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            /* Move back and scale up to fill view */
+            transform: translateZ(-1px) scale(2);
+            background: 
+                radial-gradient(circle at 20% 30%, #1db95415 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, #1db95410 0%, transparent 50%),
+                url('https://www.transparenttextures.com/patterns/stardust.png');
+            z-index: -1;
+        }
+
+        .content-layer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* LIVE BANNER */
+        .live-banner {
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            text-align: center;
+            padding: 12px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #222;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--live-red);
+            border-radius: 50%;
+            animation: pulse-animation 2s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0px rgba(255, 0, 0, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0px rgba(255, 0, 0, 0); }
+        }
+
+        header {
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 { font-size: clamp(2.5rem, 8vw, 5rem); margin: 0; letter-spacing: -2px; text-transform: uppercase; }
+        .handle { color: var(--spotify-green); font-weight: bold; font-size: 1.2rem; margin-top: 10px; }
+
+        /* HUB */
+        .hub-container {
+            max-width: 500px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+
+        .platform-link {
+            background: var(--spotify-card);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            padding: 16px 22px;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .platform-link:hover {
+            background: rgba(255,255,255,0.1);
+            transform: scale(1.05);
+            border-color: var(--spotify-green);
+        }
+
+        /* DISCOGRAPHY UPGRADE */
+        .content-section { padding: 80px 8%; }
+        .section-title { font-size: 2rem; margin-bottom: 40px; display: flex; align-items: center; gap: 15px; }
+
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .album-card {
+            background: var(--spotify-card);
+            backdrop-filter: blur(15px);
+            padding: 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        .album-card:hover {
+            transform: translateY(-15px);
+            background: rgba(255,255,255,0.1);
+            border-color: var(--spotify-green);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .album-card img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .release-badge {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: var(--spotify-green);
+            color: black;
+            font-size: 0.7rem;
+            font-weight: 900;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-transform: uppercase;
+        }
+
+        footer {
+            padding: 100px 20px;
+            text-align: center;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .socials a { color: white; margin: 0 20px; font-size: 2rem; transition: 0.3s; }
+        .socials a:hover { color: var(--spotify-green); transform: translateY(-5px); display: inline-block; }
+
+    </style>
+</head>
+<body>
+
+<div class="parallax-wrapper">
+    <div class="background-layer"></div>
+    
+    <div class="content-layer">
+        <div class="live-banner">
+            <div class="pulse"></div>
+            OFFICIAL 2025 DISCOGRAPHY LIVE
+        </div>
+
+        <header>
+            <p style="font-size: 0.8rem; font-weight: bold; color: #4CB3FF; letter-spacing: 2px;">
+                <i class="fas fa-check-circle"></i> VERIFIED ARTIST
+            </p>
+            <h1>Trevour_Sithole</h1>
+            <div class="handle">@TREVOUR_SITHOLE</div>
+        </header>
+
+        <div class="hub-container">
+            <a href="https://open.spotify.com/artist/4SA3hcyTGFwQrcgHYrmlrl?si=95qNr5AIR4Ck5BASy2NNIg" target="_blank" class="platform-link">
+                <i class="fab fa-spotify" style="color: var(--spotify-green); font-size: 1.8rem; width: 45px;"></i>
+                <span style="flex-grow: 1; font-weight: 700;">Spotify</span>
+                <i class="fas fa-chevron-right" style="font-size: 0.8rem; opacity: 0.5;"></i>
+            </a>
+
+            <a href="https://music.apple.com/us/artist/trevour-sithole/1687605642" target="_blank" class="platform-link">
+                <i class="fab fa-apple" style="color: #FC3C44; font-size: 1.8rem; width: 45px;"></i>
+                <span style="flex-grow: 1; font-weight: 700;">Apple Music</span>
+                <i class="fas fa-chevron-right" style="font-size: 0.8rem; opacity: 0.5;"></i>
+            </a>
+
+            <a href="https://www.youtube.com/@Trevour_Sithole" target="_blank" class="platform-link">
+                <i class="fab fa-youtube" style="color: #FF0000; font-size: 1.8rem; width: 45px;"></i>
+                <span style="flex-grow: 1; font-weight: 700;">YouTube</span>
+                <i class="fas fa-chevron-right" style="font-size: 0.8rem; opacity: 0.5;"></i>
+            </a>
+        </div>
+
+        <main class="content-section">
+            <h2 class="section-title">
+                <i class="fas fa-record-vinyl fa-spin" style="color: var(--spotify-green);"></i>
+                The Collection
+            </h2>
+            
+            <div class="album-grid">
+                <a href="https://open.spotify.com/album/6Bhxk2KEhJxIAJpAtD8bej?si=Rme_pbsjSv-D57DuTfp3XA" target="_blank" class="album-card">
+                    <span class="release-badge">New</span>
+                    <img src="IPHOKOPHOK.jpeg" alt="IPHOKOPHOKO">
+                    <h3>IPHOKOPHOKO</h3>
+                    <p style="color: var(--spotify-gray);">2025 • Official Album</p>
+                </a>
+
+                <a href="https://open.spotify.com/album/2FgAOtsZyKnQ8lcM0nGx9Y?si=7A1OZsIfQhixCX0l1fdoKg" target="_blank" class="album-card">
+                    <img src="VERY PRIVATE VERY MATURE.jpeg" alt="Very Private Very Mature">
+                    <h3>VERY PRIVATE VERY MATURE</h3>
+                    <p style="color: var(--spotify-gray);">2025 • Studio Album</p>
+                </a>
+
+                <a href="https://open.spotify.com/album/2TJ4xFcNQFmXPJ51RM0QJ2?si=TSI6D27iStyIombDsKDBRg" target="_blank" class="album-card">
+                    <img src="JACK OF ENERGIA PT.1.jpeg" alt="Jack OG Energia">
+                    <h3>JACK OF ENERGIA PT.1</h3>
+                    <p style="color: var(--spotify-gray);">2025 • Project</p>
+                </a>
+            </div>
+        </main>
+
+        <footer>
+            <div class="socials">
+                <a href="https://www.tiktok.com/@trevour_sithole" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/trevour_sithole" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@Trevour_Sithole" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p style="margin-top: 40px; font-weight: 900; letter-spacing: 2px;">@TREVOUR_SITHOLE</p>
+            <p style="font-size: 0.7rem; color: #555;">© 2025 STEPUP MUSIC HUB / SOUL ARMY ENTERTAINMENT</p>
+        </footer>
+    </div>
+</div>
+
+</body>
+</html>
